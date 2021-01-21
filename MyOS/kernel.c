@@ -5,50 +5,9 @@
 * 0x07 is white
 * 0x02 is green
 */
+#include "kernel.h"
 
-typedef unsigned char uint8_t;
-typedef unsigned short uint16_t;
-typedef unsigned int uint32_t;
-typedef unsigned long long uint64_t;
-typedef char* string;
-typedef const char* str;
-
-#define elif else if
-#define VGA_ADDRESS 0xB8000
-#define BUFSIZE 2200
-#define infinite while(1)
-
-enum vga_color {
-    BLACK,
-    BLUE,
-    GREEN,
-    CYAN,
-    RED,
-    MAGENTA,
-    BROWN,
-    GREY,
-    DARK_GREY,
-    BRIGHT_BLUE,
-    BRIGHT_GREEN,
-    BRIGHT_CYAN,
-    BRIGHT_RED,
-    BRIGHT_MAGENTA,
-    YELLOW,
-    WHITE,
-};
-
-char* vidmem=(char*)0xb8000;
-
-#define WHITE 0x07 
-#define RED   0x04 
-#define GREEN 0x02 
-
-uint64_t strlen(const char* str);
-void clear_screen();
-unsigned int print(const char* message, int color);
-void k_delay(int seconds);
-int abs(int x);
-
+static char* vidmem=(char*)0xb8000;
 int cleared=0;
 
 long double add(long double x, long double y){return x+y;}
@@ -58,17 +17,26 @@ long double div(long double x, long double y){return x/y;}
 
 kmain(){
   clear_screen();
-  print("1: print works    ", 0x02);
-  print("2: clear screen works    ", 0x02);
+  print("\n1: print works                                                                 ", 0x02);
+  print("\n2: clear screen works                                                          ", 0x02);
   if(abs(2)==abs(-2)){
-    print("3: abs works    ", 0x02);
+    print("\n3: abs works                                                                   ", 0x02);
   }
   else
   {
-    print("3: abs failed", 0x02);
+    print("\n3: abs failed                                                                  ", 0x02);
     return 1;
   }
-  
+  if(get_ascii_code('A')==(uint16_t)'A'){
+    print("\nget_ascii_code_works                                                           ", 0x02);
+  }
+  else{
+    print("\nget_ascii_code failed                                                        ", 0x02);
+  }
+  print("\nitoa works", 0x02);
+  k_delay(5);
+  clear_screen();
+  print("$>", 0x02);
 }
 
 int abs(int x){
@@ -80,7 +48,9 @@ int abs(int x){
   }
 }
 
-unsigned int print(const char* message, int color){
+unsigned int print(char* message, int color){
+  static int col;
+  int since_newline=0;
   int i=0;
   static int j=0;
   if(cleared==1){
@@ -89,6 +59,10 @@ unsigned int print(const char* message, int color){
   }
   unsigned int length;
   while(message[i]!=0){
+    /*if(message[i]=='\n'){
+      j=j+130-since_newline;
+      since_newline=0;
+    }*/
     vidmem[j]=message[i];
     vidmem[j+1]=color;
     i++;
@@ -126,4 +100,66 @@ uint64_t strlen(const char* str)
   while(str[length])
     length++;
   return length;
+}
+
+uint16_t get_ascii_code(char c){
+  return (uint16_t) c;
+}
+
+
+void reverse(char s[])
+ {
+     int i, j;
+     char c;
+ 
+     for (i = 0, j = strlen(s)-1; i<j; i++, j--) {
+         c = s[i];
+         s[i] = s[j];
+         s[j] = c;
+     }
+ }
+
+
+ void itoa(int n, char s[])
+ {
+     int i;
+     int sign;
+ 
+     if ((sign = n) < 0)  /* record sign */
+         n = -n;          /* make n positive */
+     i = 0;
+     do {       /* generate digits in reverse order */
+         s[i++] = n % 10 + '0';   /* get next digit */
+     } while ((n /= 10) > 0);     /* delete it */
+     if (sign < 0)
+         s[i++] = '-';
+     s[i] = '\0';
+     reverse(s);
+ }
+
+
+int strcmp(const char* s1, const char* s2){
+  while(*s1==*s2)
+    s1++, s2++;
+  return *(const unsigned char*)s1-*(const unsigned char*)s2;
+}
+
+char* strcat(char* dest, const char* src){
+  char* tmp=dest;
+  while(*dest)dest++;
+  while((*dest++=*src++)!=0);
+  return tmp;
+}
+
+
+void terminal_scroll(){
+  int i;
+  for(i=0; i<VGA_HEIGHT; i++){
+    int m;
+    for(m=0; m<80; m++){
+      vidmem[i*80+m]=vidmem[(i+1)*80+m];
+    }
+    terminal_row--;
+  }
+  terminal_row=VGA_HEIGHT-1;
 }
