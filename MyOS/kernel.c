@@ -33,7 +33,9 @@ kmain(){
   else{
     print("\nget_ascii_code failed                                                        ", 0x02);
   }
-  print("\nitoa works", 0x02);
+  char s[3];
+  itoa(25, s);
+  print(strcat("\n", s), 0x02);
   k_delay(5);
   clear_screen();
   print("$>", 0x02);
