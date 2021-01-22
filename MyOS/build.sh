@@ -5,6 +5,15 @@ qemu-system-i386 -kernel kernel.bin
 cp kernel.bin MyOS/boot/kernel.bin
 grub-mkrescue -o myos.iso MyOS/
 git add .
-git commit
+echo Would You like to enter a custom message[y/n]:
+read x
+if [[$x -eq "n"]]
+then
+	git commit -a -m "stuff"
+else
+	echo Enter your message[e.g. Updated kernel.c]:
+	read y
+	git commit -a -m $y
+fi
 git push
 #clear
