@@ -1,19 +1,16 @@
 #define NULL ((void *)0)
+#include "lib/stdint.h"
 
-typedef long Align;
-union header{
-	struct{
-		union header* ptr;
-		unsigned size;
-	} s;
-	Align x;
-};
+void* start=(void*)0x54FF;
+void* end=(void*)0x65FF;
+int end1=0x65FF;
+int current=0x54FF;
+void* current_addr=(void*)0x54FF;
 
-typedef union header Header;
-
-static Header base;
-static Header *freep=NULL;
-
-void* malloc(unsigned nbytes){
-	
+void* malloc(unsigned long long size){
+	if(size<(end1-current) && current_addr<end){
+		void* ret=current_addr;
+		current+=size;
+		current_addr+=(void*)size;
+	}
 }
