@@ -38,7 +38,7 @@ kmain(){
   print(strcat("\n", s), 0x02);
   k_delay(1);
   clear_screen();
-  print("$>", 0x02);
+  print("User>", 0x02);
 }
 
 int abs(int x){
