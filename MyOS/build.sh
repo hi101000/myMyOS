@@ -7,7 +7,7 @@ grub-mkrescue -o myos.iso MyOS/
 git add .
 echo Would You like to enter a custom message[y/n]:
 read x
-if [[$x -eq "n"]]
+if [ $x == "n" ]
 then
 	git commit -a -m "stuff"
 else
