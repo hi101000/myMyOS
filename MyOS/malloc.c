@@ -11,6 +11,6 @@ void* malloc(unsigned long long size){
 	if(size<(end1-current) && current_addr<end){
 		void* ret=current_addr;
 		current+=size;
-		current_addr+=(void*)size;
+		current_addr+=size;
 	}
 }
