@@ -28,15 +28,15 @@ kmain(){
     return 1;
   }
   if(get_ascii_code('A')==(uint16_t)'A'){
-    print("\nget_ascii_code_works                                                           ", 0x02);
+    print("\n4: get_ascii_code_works                                                        ", 0x02);
   }
   else{
-    print("\nget_ascii_code failed                                                        ", 0x02);
+    print("\n4: get_ascii_code failed                                                     ", 0x02);
   }
   char s[3];
   itoa(25, s);
   print(strcat("\n", s), 0x02);
-  k_delay(5);
+  k_delay(1);
   clear_screen();
   print("$>", 0x02);
 }
