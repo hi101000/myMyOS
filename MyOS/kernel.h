@@ -5,7 +5,7 @@ static uint16_t terminal_row;
 static const int VGA_HEIGHT=25;
 
 
-typedef uint16_t bool;
+typedef short bool;
 #define false 0
 #define true 1
 typedef char* string;

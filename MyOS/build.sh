@@ -9,7 +9,7 @@ echo Would You like to enter a custom message[y/n]:
 read x
 if [ $x == "n" ]
 then
-	git commit -m "stuff"
+	git commit -m "well wouldn't you like to know"
 else
 	echo Enter your message[e.g. Updated kernel.c]:
 	read y
