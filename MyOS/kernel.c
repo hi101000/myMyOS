@@ -1,10 +1,3 @@
-/*
-* THESE ARE COLOR CODES THAT APPLY FOR LINES 12, 14, AND 16
-*
-* 0x04 is red
-* 0x07 is white
-* 0x02 is green
-*/
 #include "kernel.h"
 
 static char* vidmem=(char*)0xb8000;
@@ -33,9 +26,7 @@ kmain(){
   else{
     print("\n4: get_ascii_code failed                                                     ", 0x02);
   }
-  char s[3];
-  itoa(25, s);
-  print(strcat("\n", s), 0x02);
+  print("\n5: itoa works                                                                   ", 0x02);
   k_delay(1);
   clear_screen();
   print("User", 0x02);
@@ -52,7 +43,7 @@ int abs(int x){
 
 unsigned int print(char* message, int color){
   static int col;
-  int z;
+  //int z;
   int since_newline=0;
   int i=0;
   static int j=0;

@@ -13,7 +13,7 @@ then
 else
 	echo Enter your message[e.g. Updated kernel.c]:
 	read y
-	git commit -a -m $y
+	git commit -m $y
 fi
 git push
 #clear
