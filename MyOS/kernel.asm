@@ -23,5 +23,5 @@ shutdown:
 start:
   cli        ;clear all interrupts
   call kmain ;call kmain
-  hlt
-  ;call shutdown       ;shutdown
+  ;hlt
+  call shutdown       ;shutdown
