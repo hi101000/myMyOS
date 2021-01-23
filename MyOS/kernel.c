@@ -62,20 +62,21 @@ unsigned int print(char* message, int color){
   }
   unsigned int length;
   while(message[i]!=0){
+    /*
     if(message[i]=='\n'){
       j=j+81-since_newline;
       since_newline=0;
       i++;
       length++;
       goto end;
-    }
+    }*/
     vidmem[j]=message[i];
     vidmem[j+1]=color;
     i++;
     j=j+2;
     length ++;
-    end:
-      z++;
+    /*end:
+      z++;*/
   }
   return length;
 }
@@ -160,7 +161,7 @@ char* strcat(char* dest, const char* src){
 }
 
 
-void terminal_scroll(){
+void scroll(){
   int i;
   for(i=0; i<VGA_HEIGHT; i++){
     int m;

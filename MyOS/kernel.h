@@ -16,7 +16,7 @@ typedef char* string;
 #define infinite while(1)
 
 enum vga_color {
-    BLACK,
+    BLACK=0,
     BLUE,
     GREEN,
     CYAN,
@@ -34,9 +34,11 @@ enum vga_color {
     WHITE,
 };
 
-#define WHITE 0x07 
-#define RED   0x04 
-#define GREEN 0x02 
+#define LG 0x07 
+#define R 0x04 
+#define G 0x02 
+#define B 0x01
+#define C 0x03
 
 uint64_t strlen(const char* str);
 void clear_screen();
@@ -47,4 +49,4 @@ uint16_t get_ascii_code(char c);
 void itoa(int n, char s[]);
 int strcmp(const char* s1, const char* s2);
 char* strcat(char* dest, const char* src);
-void terminal_scroll();
+void scroll();
