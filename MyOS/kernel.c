@@ -52,6 +52,7 @@ int abs(int x){
 
 unsigned int print(char* message, int color){
   static int col;
+  int z;
   int since_newline=0;
   int i=0;
   static int j=0;
@@ -61,15 +62,20 @@ unsigned int print(char* message, int color){
   }
   unsigned int length;
   while(message[i]!=0){
-    /*if(message[i]=='\n'){
-      j=j+130-since_newline;
+    if(message[i]=='\n'){
+      j=j+81-since_newline;
       since_newline=0;
-    }*/
+      i++;
+      length++;
+      goto end;
+    }
     vidmem[j]=message[i];
     vidmem[j+1]=color;
     i++;
     j=j+2;
     length ++;
+    end:
+      z++;
   }
   return length;
 }
