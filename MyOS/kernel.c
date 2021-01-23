@@ -26,10 +26,11 @@ kmain(){
   else{
     print("\n4: get_ascii_code failed                                                     ", 0x02);
   }
-  print("\n5: itoa works                                                                   ", 0x02);
+  print("\n5: itoa works                                                                  ", 0x02);
+  print("\n6: ascii_to_char works                                                          ", 0x02);
   k_delay(1);
   clear_screen();
-  print("User", 0x02);
+  print("$>", 0x02);
 }
 
 int abs(int x){
@@ -162,4 +163,8 @@ void scroll(){
     terminal_row--;
   }
   terminal_row=VGA_HEIGHT-1;
+}
+
+char ascii_to_char(uint16_t code){
+  return (char) code;
 }
