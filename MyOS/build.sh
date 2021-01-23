@@ -16,4 +16,5 @@ else
 	git commit -m $y
 fi
 git push
-#clear
+qemu-system-i386 -cdrom myos.iso
+clear
