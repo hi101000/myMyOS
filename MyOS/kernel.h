@@ -50,3 +50,4 @@ void itoa(int n, char s[]);
 int strcmp(const char* s1, const char* s2);
 char* strcat(char* dest, const char* src);
 void scroll();
+char ascii_to_char(uint16_t code);
