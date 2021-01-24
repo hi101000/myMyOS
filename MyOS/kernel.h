@@ -11,7 +11,6 @@ typedef short bool;
 typedef char* string;
 
 #define elif else if
-#define VGA_ADDRESS 0xB8000
 #define BUFSIZE 2200
 #define infinite while(1)
 
