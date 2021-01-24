@@ -1,7 +1,11 @@
 #include "kernel.h"
+#include "lib/encryption.h"
 
 static char* vidmem=(char*)0xb8000;
 int cleared=0;
+
+int row;
+int col;
 
 long double add(long double x, long double y){return x+y;}
 long double sub(long double x, long double y){return x-y;}
@@ -25,6 +29,7 @@ kmain(){
   }
   else{
     print("\n4: get_ascii_code failed                                                     ", 0x02);
+    return 1;
   }
   print("\n5: itoa works                                                                  ", 0x02);
   print("\n6: ascii_to_char works                                                          ", 0x02);
@@ -44,10 +49,10 @@ int abs(int x){
 
 unsigned int print(char* message, int color){
   static int col;
-  //int z;
   int since_newline=0;
   int i=0;
   static int j=0;
+  //int z=j;
   if(cleared==1){
     cleared=0;
     j=0;
@@ -57,6 +62,11 @@ unsigned int print(char* message, int color){
     /*
     if(message[i]=='\n'){
       j=j+81-since_newline;
+      while(z<j){
+        vidmem[z]=' ';
+        vidmem[z+1]=0x00;
+        z+=2;
+      }
       since_newline=0;
       i++;
       length++;
@@ -66,9 +76,10 @@ unsigned int print(char* message, int color){
     vidmem[j+1]=color;
     i++;
     j=j+2;
-    length ++;
-    /*end:
-      z++;*/
+    length++;
+    since_newline+=length;
+   /* end:
+      since_newline=0;*/
   }
   return length;
 }
@@ -143,6 +154,18 @@ int strcmp(const char* s1, const char* s2){
   while(*s1==*s2)
     s1++, s2++;
   return *(const unsigned char*)s1-*(const unsigned char*)s2;
+}
+
+void strcpy(char *source, char* destination)
+{
+    while (*source != '\0')
+    {
+      *destination = *source;
+      destination++;
+      source++;
+    }
+ 
+    *destination = '\0';
 }
 
 char* strcat(char* dest, const char* src){

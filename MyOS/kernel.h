@@ -1,3 +1,10 @@
+#ifndef _KERNEL_H
+#define _KERNEL_H 1
+#define true 1
+#define false 0
+#define and &&
+#define or ||
+#define not !
 #include "lib/stdint.h"
 
 static uint16_t terminal_col;
@@ -50,3 +57,8 @@ int strcmp(const char* s1, const char* s2);
 char* strcat(char* dest, const char* src);
 void scroll();
 char ascii_to_char(uint16_t code);
+void strcpy(char *source, char* destination);
+int get_terminal_row();
+int get_terminal_col();
+void reverse(char s[]);
+#endif

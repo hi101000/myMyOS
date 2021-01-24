@@ -3,7 +3,7 @@
 char* caesar(int key, char* str){
     int idx=0;
     while(str[idx]){
-        str[idx]=(char)(((int)str[idx])+key);
+        str[idx]+=key;
     }
     return str;
 }
@@ -14,12 +14,15 @@ char* super(char* s, int move, const char* key){
     reverse(s);
     char* buf;
     strcpy(buf, s);
-    while(buf[idx]){
+    while(buf[idx] and key[idx]){
         s[idx]=buf[idx];
         s[idx+1]=key[idx];
         idx+=2;
     }
     strcat(s, key);
+    char* str;
+    itoa(strlen(key), str);
+    strcat(s, str);
     return s;
 }
 
@@ -39,4 +42,15 @@ char* xor(char inpString[], char key)
         inpString[i] = inpString[i] ^ xorKey; 
     } 
     return inpString;
+}
+
+char* keysubst(char* s, char* key){
+    int idx=0;
+    char* buf;
+    strcpy(buf, s);
+    while(buf[idx] and key[idx]){
+        s[idx]=buf[idx];
+        s[idx+1]=key[idx];
+        idx+=2;
+    }
 }
