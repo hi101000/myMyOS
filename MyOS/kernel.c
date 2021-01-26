@@ -14,7 +14,7 @@ long double div(long double x, long double y){return x/y;}
 
 kmain(){
   clear_screen();
-  print("\n1:                                                                                                                                     print works", 0x02);
+  print("1: print works", 0x02);
   print("\n2: clear screen works", 0x02);
   if(abs(2)==abs(-2)){
     print("\n3: abs works", 0x02);
@@ -66,8 +66,8 @@ unsigned int print(char* message, int color){
       }
       z = j+(width-since_newline);
       while(z>j){
-        vidmem[j]='|';
-        vidmem[j+1]=0x02;
+        vidmem[j]=' ';
+        vidmem[j+1]=0x00;
         j+=2;
       }
       since_newline=0;
