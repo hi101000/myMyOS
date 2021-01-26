@@ -49,7 +49,6 @@ int abs(int x){
 
 unsigned int print(char* message, int color){
   static int col;
-  int width = 159;
   static int since_newline=0;
   int i=0;
   static int j=0;
@@ -61,10 +60,10 @@ unsigned int print(char* message, int color){
   unsigned int length;
   while(message[i]!=0){
     if(message[i]=='\n'){
-      while(since_newline >= width){
-        since_newline -= width+2;
+      while(since_newline >= 159){
+        since_newline -= 161;
       }
-      z = j+(width-since_newline);
+      z = j+(159-since_newline);
       while(z>j){
         vidmem[j]=' ';
         vidmem[j+1]=0x00;
