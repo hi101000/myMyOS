@@ -15,24 +15,25 @@ long double div(long double x, long double y){return x/y;}
 kmain(){
   clear_screen();
   print("1: print works", 0x02);
-  print("\n2: clear screen works", 0x02);
+  print("\n2: \\n works", 0x02);
+  print("\n3: clear screen works", 0x02);
   if(abs(2)==abs(-2)){
-    print("\n3: abs works", 0x02);
+    print("\n4: abs works", 0x02);
   }
   else
   {
-    print("\n3: abs failed", 0x02);
+    print("\n4: abs failed", 0x02);
     return 1;
   }
   if(get_ascii_code('A')==(uint16_t)'A'){
-    print("\n4: get_ascii_code_works", 0x02);
+    print("\n5: get_ascii_code_works", 0x02);
   }
   else{
-    print("\n4: get_ascii_code failed", 0x02);
+    print("\n5: get_ascii_code failed", 0x02);
     return 1;
   }
-  print("\n5: itoa works", 0x02);
-  print("\n6: ascii_to_char works", 0x02);
+  print("\n6: itoa works", 0x02);
+  print("\n7: ascii_to_char works", 0x02);
   k_delay(5);
   clear_screen();
   print("$>", 0x02);
