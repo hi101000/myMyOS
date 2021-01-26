@@ -18,4 +18,4 @@ else
 fi
 git push
 qemu-system-i386 -cdrom myos.iso
-clear
+#clear
