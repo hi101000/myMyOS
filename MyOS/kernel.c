@@ -14,28 +14,29 @@ long double div(long double x, long double y){return x/y;}
 
 kmain(){
   clear_screen();
-  print("\n1: print works                                                                 ", 0x02);
-  print("\n2: clear screen works                                                          ", 0x02);
+  print("smol msg\nreaaaaaaaaaaaaaaaaaaaaaaaaaaaaaally long message\nnormal message",0x02);
+  /*print("\n1: print works", 0x02);
+  print("\n2: clear screen works", 0x02);
   if(abs(2)==abs(-2)){
-    print("\n3: abs works                                                                   ", 0x02);
+    print("\n3: abs works", 0x02);
   }
   else
   {
-    print("\n3: abs failed                                                                  ", 0x02);
+    print("\n3: abs failed", 0x02);
     return 1;
   }
   if(get_ascii_code('A')==(uint16_t)'A'){
-    print("\n4: get_ascii_code_works                                                        ", 0x02);
+    print("\n4: get_ascii_code_works", 0x02);
   }
   else{
-    print("\n4: get_ascii_code failed                                                     ", 0x02);
+    print("\n4: get_ascii_code failed", 0x02);
     return 1;
   }
-  print("\n5: itoa works                                                                  ", 0x02);
-  print("\n6: ascii_to_char works                                                          ", 0x02);
+  print("\n5: itoa works", 0x02);
+  print("\n6: ascii_to_char works", 0x02);
   //k_delay(1);
   //clear_screen();
-  print("$>", 0x02);
+  print("\n$>", 0x02);*/
 }
 
 int abs(int x){
@@ -60,25 +61,26 @@ unsigned int print(char* message, int color){
   unsigned int length;
   while(message[i]!=0){
     if(message[i]=='\n'){
-      j=j+81-since_newline;
-      while(z<j){
-        vidmem[z]=' ';
-        vidmem[z+1]=0x00;
-        z+=2;
+      while(since_newline >= 81){
+        since_newline -= 81;
+      }
+      z = j+(81-since_newline);
+      while(z>j){
+        vidmem[j]='-';
+        vidmem[j+1]=0x02;
+        j+=2;
       }
       since_newline=0;
       i++;
       length++;
-      goto end;
+    }else{
+      vidmem[j]=message[i];
+      vidmem[j+1]=color;
+      i++;
+      j=j+2;
+      length++;
+      since_newline++;
     }
-    vidmem[j]=message[i];
-    vidmem[j+1]=color;
-    i++;
-    j=j+2;
-    length++;
-    since_newline+=length;
-    end:
-      since_newline=0;
   }
   return length;
 }
