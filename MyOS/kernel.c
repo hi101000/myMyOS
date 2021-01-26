@@ -33,9 +33,9 @@ kmain(){
   }
   print("\n5: itoa works", 0x02);
   print("\n6: ascii_to_char works", 0x02);
-  //k_delay(1);
-  //clear_screen();
-  //print("$>", 0x02);*/
+  k_delay(5);
+  clear_screen();
+  print("$>", 0x02);
 }
 
 int abs(int x){
