@@ -33,8 +33,8 @@ kmain(){
   }
   print("\n5: itoa works                                                                  ", 0x02);
   print("\n6: ascii_to_char works                                                          ", 0x02);
-  k_delay(1);
-  clear_screen();
+  //k_delay(1);
+  //clear_screen();
   print("$>", 0x02);
 }
 
@@ -52,14 +52,13 @@ unsigned int print(char* message, int color){
   int since_newline=0;
   int i=0;
   static int j=0;
-  //int z=j;
+  int z=j;
   if(cleared==1){
     cleared=0;
     j=0;
   }
   unsigned int length;
   while(message[i]!=0){
-    /*
     if(message[i]=='\n'){
       j=j+81-since_newline;
       while(z<j){
@@ -71,15 +70,15 @@ unsigned int print(char* message, int color){
       i++;
       length++;
       goto end;
-    }*/
+    }
     vidmem[j]=message[i];
     vidmem[j+1]=color;
     i++;
     j=j+2;
     length++;
     since_newline+=length;
-   /* end:
-      since_newline=0;*/
+    end:
+      since_newline=0;
   }
   return length;
 }
