@@ -14,8 +14,7 @@ long double div(long double x, long double y){return x/y;}
 
 kmain(){
   clear_screen();
-  print("smol msg\nreaaaaaaaaaaaaaaaaaaaaaaaaaaaaaally long message\nnormal message",0x02);
-  /*print("\n1: print works", 0x02);
+  print("\n1:                                                                                                                                     print works", 0x02);
   print("\n2: clear screen works", 0x02);
   if(abs(2)==abs(-2)){
     print("\n3: abs works", 0x02);
@@ -36,7 +35,7 @@ kmain(){
   print("\n6: ascii_to_char works", 0x02);
   //k_delay(1);
   //clear_screen();
-  print("\n$>", 0x02);*/
+  //print("$>", 0x02);*/
 }
 
 int abs(int x){
@@ -50,7 +49,8 @@ int abs(int x){
 
 unsigned int print(char* message, int color){
   static int col;
-  int since_newline=0;
+  int width = 159;
+  static int since_newline=0;
   int i=0;
   static int j=0;
   int z=j;
@@ -61,12 +61,12 @@ unsigned int print(char* message, int color){
   unsigned int length;
   while(message[i]!=0){
     if(message[i]=='\n'){
-      while(since_newline >= 81){
-        since_newline -= 81;
+      while(since_newline >= width){
+        since_newline -= width+2;
       }
-      z = j+(81-since_newline);
+      z = j+(width-since_newline);
       while(z>j){
-        vidmem[j]='-';
+        vidmem[j]='|';
         vidmem[j+1]=0x02;
         j+=2;
       }
@@ -79,7 +79,7 @@ unsigned int print(char* message, int color){
       i++;
       j=j+2;
       length++;
-      since_newline++;
+      since_newline+=2;
     }
   }
   return length;
