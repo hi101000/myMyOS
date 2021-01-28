@@ -73,7 +73,8 @@ unsigned int print(char* message, int color){
       since_newline=0;
       i++;
       length++;
-    }else{
+    }
+    else{
       vidmem[j]=message[i];
       vidmem[j+1]=color;
       i++;
