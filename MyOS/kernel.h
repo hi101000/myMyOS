@@ -15,7 +15,7 @@ static const int VGA_HEIGHT=25;
 typedef short bool;
 #define false 0
 #define true 1
-typedef char* string;
+typedef char* str;
 
 #define elif else if
 #define BUFSIZE 2200
@@ -61,4 +61,5 @@ void strcpy(char *source, char* destination);
 int get_terminal_row();
 int get_terminal_col();
 void reverse(char s[]);
+void delay(int i);
 #endif

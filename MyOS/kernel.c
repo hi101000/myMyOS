@@ -1,5 +1,6 @@
 #include "kernel.h"
 #include "lib/encryption.h"
+#include "drivers/kbd.h"
 
 static char* vidmem=(char*)0xb8000;
 int cleared=0;
@@ -192,4 +193,14 @@ void scroll(){
 
 char ascii_to_char(uint16_t code){
   return (char) code;
+}
+
+void delay(int i) {
+    int c = 1 , d = 1 ;
+
+    for ( c = 1; c <= 5000*i; c++) {
+        for ( d = 1; d <= 5000*i; d ++) {
+            asm("nop");
+        }
+    }
 }
