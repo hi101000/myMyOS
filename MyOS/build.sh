@@ -4,10 +4,14 @@ gcc -m32 -c -ffreestanding encryption/encryption.c -o encrypt.o
 ld -m elf_i386 -T link.ld -o kernel.bin ksm.o kc.o encrypt.o
 qemu-system-i386 -kernel kernel.bin
 cp kernel.bin MyOS/boot/kernel.bin
-#uncomment if on debian based distribution
-#grub-mkrescue -o myos.iso MyOS/
-#uncomment if on redhat based distribution
-grub2-mkrescue -o myos.iso MyOS/
+echo are you on a debian or redhat based distribution[r/d]:
+read x
+if [ $x == "d" ]
+then
+	grub-mkrescue -o myos.iso MyOS/
+else
+	grub2-mkrescue -o myos.iso MyOS/
+fi
 git add .
 echo Would You like to enter a custom message[y/n]:
 read x
