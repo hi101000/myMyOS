@@ -5,6 +5,8 @@
 #define and &&
 #define or ||
 #define not !
+#define MAX_ROWS 25
+#define MAX_COLS 80
 #include "lib/stdint.h"
 
 static uint16_t terminal_col;
@@ -55,11 +57,11 @@ uint16_t get_ascii_code(char c);
 void itoa(int n, char s[]);
 int strcmp(const char* s1, const char* s2);
 char* strcat(char* dest, const char* src);
-void scroll();
 char ascii_to_char(uint16_t code);
 void strcpy(char *source, char* destination);
 int get_terminal_row();
 int get_terminal_col();
 void reverse(char s[]);
 void delay(int i);
+void memcpy(char* src, char* dest, int bytes);
 #endif

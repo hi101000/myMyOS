@@ -207,3 +207,10 @@ void delay(int i) {
         }
     }
 }
+
+void memcpy(char* src, char* dest, int bytes){
+  int i;
+  for (i =0; i < bytes ; i ++) {
+  *( dest + i) = *( src + i );
+  }
+}
