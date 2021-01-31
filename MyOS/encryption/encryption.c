@@ -14,7 +14,7 @@ char* super(char* s, int move, const char* key){
     reverse(s);
     char* buf;
     strcpy(buf, s);
-    while(buf[idx] and key[idx]){
+    while(buf[idx] && key[idx]){
         s[idx]=buf[idx];
         s[idx+1]=key[idx];
         idx+=2;
@@ -49,7 +49,7 @@ char* keysubst(char* s, char* key){
     int idx=0;
     char* buf;
     strcpy(buf, s);
-    while(buf[idx] and key[idx]){
+    while(buf[idx] && key[idx]){
         s[idx]=buf[idx];
         s[idx+1]=key[idx];
         idx+=2;

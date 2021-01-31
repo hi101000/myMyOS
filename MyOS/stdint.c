@@ -1,5 +1,4 @@
 #include "lib/stdint.h"
-#include "kernel.h"
 
 uint32_t make_int(char c){
    switch(c){

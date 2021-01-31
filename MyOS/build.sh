@@ -1,5 +1,5 @@
 nasm -f elf32 kernel.asm -o ksm.o
-gcc -m32 -c -ffreestanding kernel.c -o kc.o
+g++ -m32 -c -ffreestanding kernel.cpp -o kc.o
 gcc -m32 -c -ffreestanding encryption/encryption.c -o encrypt.o
 gcc -m32 -c -ffreestanding drivers/kbd.c -o kbd.o
 gcc -m32 -c -ffreestanding stdint.c -o stdint.o

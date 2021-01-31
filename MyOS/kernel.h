@@ -1,10 +1,5 @@
 #ifndef _KERNEL_H
 #define _KERNEL_H 1
-#define true 1
-#define false 0
-#define and &&
-#define or ||
-#define not !
 #define MAX_ROWS 25
 #define MAX_COLS 80
 #include "lib/stdint.h"
@@ -13,10 +8,6 @@ static uint16_t terminal_col;
 static uint16_t terminal_row;
 static const int VGA_HEIGHT=25;
 
-
-typedef short bool;
-#define false 0
-#define true 1
 typedef char* str;
 
 #define elif else if
@@ -41,6 +32,12 @@ enum vga_color {
     YELLOW,
     WHITE,
 };
+
+typedef union{
+    uint64_t i;
+    uint8_t* s;
+    long double d;
+} dynamic;
 
 #define LG 0x07 
 #define R 0x04 

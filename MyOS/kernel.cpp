@@ -13,7 +13,7 @@ long double sub(long double x, long double y){return x-y;}
 long double mul(long double x, long double y){return x*y;}
 long double div(long double x, long double y){return x/y;}
 
-kmain(){
+int kmain(){
   clear_screen();
   print("1: print works", 0x02);
   print("\n2: \\n works", 0x02);
@@ -35,12 +35,13 @@ kmain(){
   }
   print("\n6: itoa works", 0x02);
   print("\n7: ascii_to_char works", 0x02);
-  if('\0'==(char*)0 and '\0'==(char)'\000' and (char*)0=='\000'){
+  if('\0'==(char)0 and '\0'==(char)'\000' and (char)0=='\000'){
     print("\n8: NULL works", 0x02);
   }
   k_delay(5);
   clear_screen();
   print("$>", 0x02);
+  return 0;
 }
 
 int abs(int x){

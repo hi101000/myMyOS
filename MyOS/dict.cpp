@@ -21,4 +21,4 @@ void rmItem(dict dic, int idx){
 
 void changeItem(dict dic, int idx, uint16_t* key, uint16_t* val){
     dic.d[idx]=Dictionary(key, val);
-}
+}   
