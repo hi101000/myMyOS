@@ -1,4 +1,3 @@
-@echo off
 nasm -f elf32 kernel.asm -o ksm.o
 gcc -m32 -c -ffreestanding kernel.c -o kc.o
 gcc -m32 -c -ffreestanding encryption/encryption.c -o encrypt.o
