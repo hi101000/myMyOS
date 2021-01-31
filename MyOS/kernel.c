@@ -35,7 +35,7 @@ int kmain(){
   }
   print("\n6: itoa works", 0x02);
   print("\n7: ascii_to_char works", 0x02);
-  if('\0'==(char)0 and '\0'==(char)'\000' and (char)0=='\000'){
+  if('\0'==(char)0 && '\0'==(char)'\000' && (char)0=='\000'){
     print("\n8: NULL works", 0x02);
   }
   k_delay(5);
