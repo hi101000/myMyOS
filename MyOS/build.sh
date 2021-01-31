@@ -15,6 +15,7 @@ then
 else
 	grub2-mkrescue -o myos.iso MyOS/
 fi
+mv myos.iso ~/Documents/myos.iso
 git add .
 echo Would You like to enter a custom message[y/n]:
 read x
@@ -27,5 +28,5 @@ else
 	git commit -m $y
 fi
 git push
-qemu-system-i386 -cdrom myos.iso
+qemu-system-i386 -cdrom ~/Documents/myos.iso
 clear
