@@ -3,12 +3,10 @@
 #include "lib/stdint.h"
 class Dictionary;
 
-typedef Dictionary* dict;
+void addItem(dict dic, int idx, uint16_t* key, uint16_t* val);
 
-void addItem(dict d, int idx, uint16_t* key, uint16_t* val);
+void rmItem(dict dic, int idx);
 
-void rmItem(dict d, int idx);
-
-void changeItem(dict d, int idx, uint16_t* key, uint16_t* val);
+void changeItem(dict dic, int idx, uint16_t* key, uint16_t* val);
 
 #endif

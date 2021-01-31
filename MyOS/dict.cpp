@@ -1,5 +1,3 @@
-#include "dict.h"
-
 #include "lib/stdint.h"
 class Dictionary{
 public:
@@ -11,16 +9,16 @@ public:
    }
 };
 
-typedef Dictionary* dict;
+typedef struct dict{Dictionary d[100000000];} dict;
 
-void addItem(dict d, int idx, uint16_t* key, uint16_t* val){
-    d[idx]=Dictionary(key, val);
+void addItem(dict dic, int idx, uint16_t* key, uint16_t* val){
+    dic.d[idx]=Dictionary(key, val);
 }
 
-void rmItem(dict d, int idx){
-    d[idx]=Dictionary((uint16_t*)"\0", (uint16_t*)"\0");
+void rmItem(dict dic, int idx){
+    dic.d[idx]=Dictionary((uint16_t*)"\0", (uint16_t*)"\0");
 }
 
-void changeItem(dict d, int idx, uint16_t* key, uint16_t* val){
-    d[idx]=Dictionary(key, val);
+void changeItem(dict dic, int idx, uint16_t* key, uint16_t* val){
+    dic.d[idx]=Dictionary(key, val);
 }
