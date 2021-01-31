@@ -23,6 +23,7 @@ char* super(char* s, int move, const char* key){
     char* str;
     itoa(strlen(key), str);
     strcat(s, str);
+    xor(s, 'd');
     return s;
 }
 
