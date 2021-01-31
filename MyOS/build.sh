@@ -29,4 +29,5 @@ else
 fi
 git push
 qemu-system-i386 -cdrom ~/Documents/myos.iso
+qemu-system-i386 -hdd kernel.bin
 clear
