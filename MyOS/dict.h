@@ -18,7 +18,7 @@ void addItem(dict d, int idx, uint16_t* key, uint16_t* val){
 }
 
 void rmItem(dict d, int idx){
-    d[idx]=Dictionary('\0', '\0');
+    d[idx]=Dictionary((uint16_t*)"\0", (uint16_t*)"\0");
 }
 
 void changeItem(dict d, int idx, uint16_t* key, uint16_t* val){

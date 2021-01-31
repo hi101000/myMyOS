@@ -3,7 +3,8 @@ gcc -m32 -c -ffreestanding kernel.c -o kc.o
 gcc -m32 -c -ffreestanding encryption/encryption.c -o encrypt.o
 gcc -m32 -c -ffreestanding drivers/kbd.c -o kbd.o
 gcc -m32 -c -ffreestanding stdint.c -o stdint.o
-ld -m elf_i386 -T link.ld -o kernel.bin ksm.o kc.o encrypt.o kbd.o stdint.o
+g++ -m32 -c -ffreestanding dict.cpp -o dict.o
+ld -m elf_i386 -T link.ld -o kernel.bin ksm.o kc.o encrypt.o kbd.o stdint.o dict.o
 qemu-system-i386 -kernel kernel.bin
 cp kernel.bin MyOS/boot/kernel.bin
 echo are you on a debian or redhat based distribution[r/d]:
