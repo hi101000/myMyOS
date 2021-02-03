@@ -18,7 +18,7 @@ int kmain(){
   print("1: print works", 0x02);
   print("\n2: \\n works", 0x02);
   print("\n3: clear screen works", 0x02);
-  if(abs(2)==abs(-2)){
+  if(abs(2)==abs(-2)&&abs(2)==2&&abs(-2)==2){
     print("\n4: abs works", 0x02);
   }
   else
