@@ -38,6 +38,12 @@ int kmain(){
   if('\0'==(char)0 && '\0'==(char)'\000' && (char)0=='\000'){
     print("\n8: NULL works", 0x02);
   }
+  if(strcmp(strcat("hello", " world"), "hello world")==0){
+    print("\n9: strcat and strcmp work", 0x02);
+  }
+  else{
+    print("\n9: strcmp and strcat failed", 0x02);
+  }
   k_delay(5);
   clear_screen();
   print("$>", 0x02);
